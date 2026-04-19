@@ -3,134 +3,120 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Isam Dev Studio</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- AOS Animation -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+    <!-- Particles -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.jsx"></script>
 </head>
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #0f172a;
-        color: white;
-        text-align: center;
-    }
-
-    header {
-        padding: 20px;
-        background: #020617;
-    }
-
-    .hero {
-        padding: 50px;
-    }
-
-    button {
-        padding: 10px 20px;
-        background: #3b82f6;
-        border: none;
-        color: white;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-
-    .services {
-        padding: 40px;
-    }
-
-    .cards {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    .card {
-        background: #1e293b;
-        padding: 20px;
-        border-radius: 10px;
-        width: 150px;
-    }
-
-    .portfolio {
-        padding: 40px;
-    }
-
-    .projects {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    .project {
-        background: #1e293b;
-        padding: 20px;
-        border-radius: 10px;
-        width: 150px;
-    }
-
-    footer {
-        padding: 20px;
-        background: #020617;
-    }
-
-    #bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background: #0f172a;
-    }
-    .image {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-    }
-</style>
 
 <body>
 
+    <!-- PARTICLES BACKGROUND -->
+    <div id="particles-js"></div>
+
+    <!-- NAVBAR -->
     <header>
-        <h1>Isam Dev Studio</h1>
-        <div class="image">
-        <p>Web & App Developer</p>
-        <img src="assets/1.png" alt="Isam Dev Studio" width="100">
-        </div>
+        <nav>
+            <img src="assets/1.png" alt="logo" />
+
+            <ul id="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a class="btn-nav" href="https://wa.me/923359959975">Hire Me</a></li>
+            </ul>
+
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+        </nav>
     </header>
 
-    <section class="hero">
-        <h2>Need a Website or App?</h2>
-        <p>Modern • Fast • Professional</p>
-        <button onclick="contact()">DM Me</button>
-        
-    </section>
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <h1>We Build <span id="typing"></span></h1>
+        <p>Modern websites, apps & digital experiences that convert visitors into clients.</p>
 
-    <section class="services">
-        <h2>My Services</h2>
-        <div class="cards">
-            <div class="card">💻 Web Development</div>
-            <div class="card">📱 App Development</div>
-            <div class="card">🎨 UI/UX Design</div>
+        <div class="hero-btns">
+            <a href="#contact" class="btn">Start Project</a>
+            <a href="#services" class="btn-outline">Explore Work</a>
         </div>
     </section>
 
-    <section class="portfolio">
-        <h2>My Work</h2>
-        <div class="projects">
-            <div class="project">Project 1</div>
-            <div class="project">Project 2</div>
-            <div class="project">Project 3</div>
+    <!-- STATS -->
+    <section class="stats" data-aos="fade-up">
+        <div>
+            <h2>50+</h2>
+            <p>Projects</p>
+        </div>
+        <div>
+            <h2>30+</h2>
+            <p>Clients</p>
+        </div>
+        <div>
+            <h2>100%</h2>
+            <p>Satisfaction</p>
         </div>
     </section>
 
+    <!-- SERVICES -->
+    <section class="section" id="services">
+        <h2 class="title" data-aos="fade-up">Our Services</h2>
+
+        <div class="grid">
+            <div class="card" data-aos="zoom-in">
+                <h3>Web Development</h3>
+                <p>Fast, scalable and responsive websites.</p>
+            </div>
+
+            <div class="card" data-aos="zoom-in">
+                <h3>App Development</h3>
+                <p>Android & web apps with modern UI.</p>
+            </div>
+
+            <div class="card" data-aos="zoom-in">
+                <h3>UI/UX Design</h3>
+                <p>Clean designs that increase conversions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="section" id="work">
+        <h2 class="title" data-aos="fade-up">Recent Work</h2>
+
+        <div class="grid">
+            <div class="work-card">E-Commerce Website</div>
+            <div class="work-card">Portfolio Website</div>
+            <div class="work-card">Business Landing Page</div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="contact" data-aos="zoom-in">
+        <h2>Ready to grow your business?</h2>
+        <p>Let’s build something powerful together.</p>
+        <a href="https://wa.me/923359959975" class="btn">Contact Now</a>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <p>📩 Contact: Isamshah0011@email.com</p>
-        <a href="https://wa.me/03359959975" target="_blank">
-            <button>Chat on WhatsApp 💬</button>
-        </a>
+        © 2026 Isam Dev Studio • All Rights Reserved
     </footer>
-    <canvas id="bg"></canvas>
+
+    <!-- WhatsApp -->
+    <a class="whatsapp" href="https://wa.me/923359959975">💬</a>
+
+    <!-- JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
+
 </body>
 
 </html>
