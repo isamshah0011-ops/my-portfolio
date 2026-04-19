@@ -1,41 +1,60 @@
-function contact() {
-  alert("DM me on WhatsApp or Email!");
-}
-const canvas = document.getElementById("bg");
-const ctx = canvas.getContext("2d");
+// AOS
+AOS.init();
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-for (let i = 0; i < 80; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    size: Math.random() * 2,
-    speedX: (Math.random() - 0.5),
-    speedY: (Math.random() - 0.5)
-  });
+// MOBILE MENU
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
 }
 
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+// TYPING EFFECT
+const words = [
+    "High-Converting Websites",
+    "Modern Web Apps",
+    "Business Solutions"
+];
 
-  particles.forEach(p => {
-    p.x += p.speedX;
-    p.y += p.speedY;
+let i = 0;
+let j = 0;
+let current = "";
+let isDeleting = false;
 
-    ctx.fillStyle = "#3b82f6";
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-    ctx.fill();
+function type() {
+    current = words[i];
 
-    if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-    if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-  });
+    if (isDeleting) {
+        j--;
+    } else {
+        j++;
+    }
 
-  requestAnimationFrame(animate);
+    document.getElementById("typing").textContent =
+        current.substring(0, j);
+
+    if (!isDeleting && j === current.length) {
+        isDeleting = true;
+        setTimeout(type, 1200);
+        return;
+    }
+
+    if (isDeleting && j === 0) {
+        isDeleting = false;
+        i = (i + 1) % words.length;
+    }
+
+    setTimeout(type, isDeleting ? 50 : 100);
 }
 
-animate();
+type();
+
+// PARTICLES
+particlesJS("particles-js", {
+    particles: {
+        number: { value: 70 },
+        size: { value: 3 },
+        move: { speed: 2 },
+        line_linked: {
+            enable: true,
+            distance: 150
+        }
+    }
+});
