@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Isam Dev Studio</title>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 
     <!-- AOS Animation -->
@@ -13,13 +18,24 @@
 
     <!-- Particles -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="script.jsx"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- JS -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="module" src="script.js"></script>
 </head>
 
 <body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
 
     <!-- PARTICLES BACKGROUND -->
     <div id="particles-js"></div>
+    <div class="floating-shapes">
+        <div class="shape s1"></div>
+        <div class="shape s2"></div>
+        <div class="shape s3"></div>
+    </div>
 
     <!-- NAVBAR -->
     <header>
@@ -27,11 +43,12 @@
             <img src="assets/1.png" alt="logo" />
 
             <ul id="menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a class="btn-nav" href="https://wa.me/923359959975">Hire Me</a></li>
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#services" onclick="closeMenu()">Services</a></li>
+                <li><a href="#work" onclick="closeMenu()">Work</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+                <li><a class="btn-nav" href="https://wa.me/923359959975" onclick="closeMenu()">Hire Me</a></li>
+                <li><a href="login.html">admin</a></li>
             </ul>
 
             <div class="hamburger" onclick="toggleMenu()">☰</div>
@@ -50,17 +67,17 @@
     </section>
 
     <!-- STATS -->
-    <section class="stats" data-aos="fade-up">
-        <div>
-            <h2>50+</h2>
+    <section class="stats" data-aos="zoom-in-up">
+        <div data-aos="zoom-in" data-aos-delay="0">
+            <h2 class="stat-count">50+</h2>
             <p>Projects</p>
         </div>
-        <div>
-            <h2>30+</h2>
+        <div data-aos="zoom-in" data-aos-delay="200">
+            <h2 class="stat-count">30+</h2>
             <p>Clients</p>
         </div>
-        <div>
-            <h2>100%</h2>
+        <div data-aos="zoom-in" data-aos-delay="400">
+            <h2 class="stat-count">100%</h2>
             <p>Satisfaction</p>
         </div>
     </section>
@@ -70,19 +87,42 @@
         <h2 class="title" data-aos="fade-up">Our Services</h2>
 
         <div class="grid">
-            <div class="card" data-aos="zoom-in">
+            <div class="card" data-aos="zoom-in" data-aos-delay="0">
+                <div class="icon-glow">💻</div>
                 <h3>Web Development</h3>
                 <p>Fast, scalable and responsive websites.</p>
             </div>
 
-            <div class="card" data-aos="zoom-in">
+            <div class="card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="icon-glow">📱</div>
                 <h3>App Development</h3>
                 <p>Android & web apps with modern UI.</p>
             </div>
 
-            <div class="card" data-aos="zoom-in">
+            <div class="card" data-aos="zoom-in" data-aos-delay="400">
+                <div class="icon-glow">🎨</div>
                 <h3>UI/UX Design</h3>
                 <p>Clean designs that increase conversions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW WE WORK -->
+    <section class="section process" id="process">
+        <h2 class="title" data-aos="fade-up">How We Work</h2>
+        <div class="process-container">
+            <div class="process-line"></div>
+            <div class="process-step" data-aos="fade-up" data-aos-delay="0">
+                <div class="step-icon">💬</div>
+                <h3>Discuss Your Idea</h3>
+            </div>
+            <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+                <div class="step-icon">💻</div>
+                <h3>Design & Develop</h3>
+            </div>
+            <div class="process-step" data-aos="fade-up" data-aos-delay="400">
+                <div class="step-icon">🚀</div>
+                <h3>Launch & Support</h3>
             </div>
         </div>
     </section>
@@ -91,11 +131,7 @@
     <section class="section" id="work">
         <h2 class="title" data-aos="fade-up">Recent Work</h2>
 
-        <div class="grid">
-            <div class="work-card">E-Commerce Website</div>
-            <div class="work-card">Portfolio Website</div>
-            <div class="work-card">Business Landing Page</div>
-        </div>
+        <div class="grid" id="projects"></div>
     </section>
 
     <!-- CTA -->
@@ -110,12 +146,12 @@
         © 2026 Isam Dev Studio • All Rights Reserved
     </footer>
 
+    <!-- Back to Top -->
+    <button id="backToTop" class="back-to-top" onclick="window.scrollTo(0,0)">↑</button>
+
     <!-- WhatsApp -->
     <a class="whatsapp" href="https://wa.me/923359959975">💬</a>
 
-    <!-- JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js"></script>
 
 </body>
 
