@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel - Isam Dev</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body style="padding:40px;">
+    <button onclick="logout()" class="btn">Logout</button>
+
+    <h1>⚡ Admin Panel</h1>
+
+    <div class="card" style="max-width:400px; margin-top:20px;">
+        <input id="title" placeholder="Project Title" style="width:100%; padding:10px;"><br><br>
+        <input id="desc" placeholder="Project Description" style="width:100%; padding:10px;"><br><br>
+
+        <button onclick="addProject()" class="btn">Add Project</button>
+    </div>
+
+    <h2 style="margin-top:40px;">Existing Projects</h2>
+
+    <div id="list"></div>
+
+    <script type="module" src="./admin.js"></script>
+</body>
+
+</html>
